@@ -1,0 +1,37 @@
+<div class="container">
+    <div>
+        <h2>Modifier un sport:</h2>
+    </div>
+    <form>
+        <div  class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Sport</label>
+            <input readonly type="text" [(ngModel)]="currentSport.idSport" name="idSport" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Sport</label>
+            <input type="text" [(ngModel)]="currentSport.nomSport" name="nomSport" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix Sport</label>
+            <input type="number" [(ngModel)]="currentSport.prixSport" name="prixSport" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date création</label>
+            <input type="date" [ngModel]="currentSport.dateCreation | date: 'yyyy-MM-dd'" 
+            (ngModelChange)=" currentSport.dateCreation= $event" name="dateCreation"  class="form-control">
+        </div>
+
+         <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Categorie</label>
+            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updatedCatId">
+                <option *ngFor="let cat of categories" [value]="cat.idCat">
+                    {{cat.nomCat}}
+                </option>  
+            </select>
+        </div> 
+
+        <div class="mt-2">
+            <button type="submit" (click)="updateSport()" class="btn btn-success">Modifer</button>
+        </div>
+    </form>
+</div>
